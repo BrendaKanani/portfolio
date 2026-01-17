@@ -1,0 +1,202 @@
+/* src/App.css */
+/* Import Serif Font for elegance */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --brand-blue: #364974;       
+  --brand-dark: #1e2a45;
+  /* Deepened background almost to black for contrast */
+  --bg-color: #050810;          
+  --text-primary: #ffffff;     
+  --text-secondary: #a0aec0;   
+  --accent-light: #8da9d4;
+
+  /* Font Families */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-sans); /* Body text remains clean sans-serif */
+  margin: 0; padding: 0; line-height: 1.7;
+  font-weight: 300;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- TYPOGRAPHY UPDATES --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif); /* Headings use the new elegant font */
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+/* --- NAVBAR (Kept largely the same) --- */
+.navbar {
+  position: fixed; top: 0; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 5%;
+  background: rgba(5, 8, 16, 0.8); /* Darker glass */
+  backdrop-filter: blur(10px); z-index: 1000;
+  border-bottom: 1px solid #1e2a45; box-sizing: border-box;
+}
+.logo { font-weight: 700; font-size: 1.5rem; color: var(--accent-light); font-family: var(--font-serif); }
+.nav-links a { margin-left: 2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px;}
+.nav-links a:hover { color: var(--accent-light); }
+.hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+/* --- SECTIONS COMMON --- */
+.section {
+  padding: 6rem 0;
+  min-height: 60vh;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+/* --- NEW HERO STRUCTURE (Matches Reference Image 1) --- */
+.hero {
+  min-height: 100vh;
+  padding-top: 0;
+  align-items: center; text-align: center;
+  position: relative;
+  /* PLACEHOLDER BG IMAGE - Replace URL with your chosen tech image */
+  background-image: linear-gradient(rgba(5, 8, 16, 0.7), rgba(5, 8, 16, 0.8)), url('./images/hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+}
+
+.hero h1 {
+  font-size: 5rem; margin-bottom: 1rem; line-height: 1;
+  text-transform: uppercase; letter-spacing: 2px;
+}
+
+/* src/App.css */
+
+.hero-avatar {
+  width: 250px;              /* Size of the circle */
+  height: 250px;             /* Must match width to be a perfect circle */
+  margin-top: 80px;
+  border-radius: 50%;        /* This makes it round */
+  object-fit: cover;         /* Prevents stretching if photo isn't square */
+  
+  /* Styling to match your Blue/Dark Theme */
+  border: 3px solid var(--brand-blue); 
+  box-shadow: 0 0 25px rgba(54, 73, 116, 0.5); /* Blue glow effect */
+  
+  margin-bottom: 0.2rem;       /* Space between photo and your name */
+  transition: transform 0.3s ease;
+}
+
+.hero-avatar:hover {
+  transform: scale(1.05);    /* Subtle zoom when hovered */
+  border-color: var(--accent-light);
+}
+
+.hero h2 {
+  font-family: var(--font-sans); /* Subtitle stays clean sans */
+  font-size: 1.2rem; color: var(--accent-light);
+  text-transform: uppercase; letter-spacing: 3px; margin-bottom: 3rem;
+}
+
+/* Elegant Button Style */
+.btn-elegant {
+  padding: 1rem 3rem;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  text-transform: uppercase; text-decoration: none;
+  letter-spacing: 2px; font-size: 0.9rem; transition: all 0.4s ease;
+}
+.btn-elegant:hover { background: var(--brand-blue); border-color: var(--brand-blue); }
+
+/* --- NEW ABOUT STRUCTURE (Matches Reference Image 3 - Split view) --- */
+.about-split {
+  display: flex; align-items: center; gap: 4rem;
+}
+
+.about-photo-container { flex: 1; }
+/* The square photo style */
+.photo-square {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover;
+  border-radius: 4px; /* Slight softening like reference */
+  border: 1px solid #1e2a45;
+}
+.about-text { flex: 1; }
+.about-text h3 { font-size: 4rem; line-height: 1; margin-bottom: 2rem; }
+.about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+
+/* --- NEW CONTACT STRUCTURE (Matches Reference Image 2 - Arched) --- */
+.contact-structure {
+  text-align: center;
+}
+.contact-arch-container {
+  margin: 3rem auto;
+  width: 300px; height: 400px; /* Tall arch proportions */
+}
+/* The Arched Photo Style */
+.photo-arch {
+  width: 100%; height: 100%; object-fit: cover;
+  border-top-left-radius: 150px; border-top-right-radius: 150px;
+  border: 1px solid #1e2a45;
+}
+.contact-columns {
+  display: flex; justify-content: space-between;
+  max-width: 800px; margin: 4rem auto 0;
+  text-align: center;
+}
+.contact-col h4 {
+  font-family: var(--font-sans); text-transform: uppercase;
+  letter-spacing: 1px; color: var(--accent-light); margin-bottom: 1rem;
+  font-size: 0.9rem; text-decoration: underline;
+}
+.contact-col a {
+  display: block; color: var(--text-secondary); text-decoration: none;
+  margin-bottom: 0.5rem; transition: color 0.3s;
+}
+.contact-col a:hover { color: var(--brand-blue); }
+
+
+/* --- SKILLS & PROJECTS (Retaining grids, updated fonts) --- */
+.skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+.skill-category h4 { color: var(--accent-light); margin-bottom: 1.5rem; border-bottom: 1px solid #1e2a45; padding-bottom: 1rem; }
+.skill-list span { display: block; background: rgba(30, 42, 69, 0.3); margin-bottom: 0.8rem; padding: 0.8rem 1rem; border: 1px solid #1e2a45; font-size: 0.95rem; transition: all 0.3s; }
+.skill-list span:hover { border-color: var(--brand-blue); background: rgba(54, 73, 116, 0.2); }
+
+.project-card { background-color: rgba(11, 15, 25, 0.8); padding: 2.5rem; border: 1px solid #1e2a45; transition: all 0.4s ease; position: relative; }
+.project-card:hover { transform: translateY(-5px); border-color: var(--brand-blue); }
+.project-card h3 { margin-top: 0.5rem; font-size: 1.8rem; font-family: var(--font-serif); }
+.tag { font-size: 0.75rem; color: var(--accent-light); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; font-family: var(--font-sans); }
+.tech-stack { display: flex; gap: 0.5rem; margin-top: 2rem; flex-wrap: wrap; }
+.tech-badge { background: rgba(54, 73, 116, 0.2); color: var(--text-secondary); padding: 0.4rem 1rem; font-size: 0.8rem; border: 1px solid rgba(141, 169, 212, 0.1); font-family: var(--font-sans); }
+
+/* --- FOOTER --- */
+footer { margin-top: 8rem; text-align: center; color: var(--text-secondary); border-top: 1px solid #1e2a45; padding: 3rem 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
+
+/* Mobile Responsiveness Updates */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+  .about-split { flex-direction: column; gap: 2rem; }
+  .about-text h3 { font-size: 3rem; }
+  .contact-columns { flex-direction: column; gap: 2rem; }
+  .navbar { padding: 1rem 2rem; }
+  .hamburger { display: block; }
+  .nav-links { position: absolute; top: 60px; left: 0; width: 100%; background: var(--bg-color); flex-direction: column; align-items: center; padding: 2rem 0; display: none; border-bottom: 1px solid #1e2a45; }
+  .nav-links.active { display: flex; }
+  .nav-links a { margin: 1rem 0; }
+}
