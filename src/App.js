@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { projectsData } from './data/projects';
 import profile from './images/brenda-profile.jpg';
+import logo from './images/bk.png';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,7 +13,9 @@ function App() {
       
       {/* --- NAVIGATION BAR --- */}
       <nav className="navbar">
-        <div className="logo">Brenda Kanani</div>
+       <div className="logo-container">
+       <img src={logo} alt="Brenda Kanani Logo" className="navbar-logo" />
+       </div>
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a>
           <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
@@ -52,7 +55,7 @@ function App() {
                 I am driven by a curiosity that spans the entire stack.
               </p>
               <p>
-                Whether I am simulating <strong>8051 microcontrollers</strong>, building responsive 
+                Whether I am building responsive 
                 front-ends with <strong>React</strong>, or hiking Mount Kenya with the 
                 <em> Climb to Educate Club</em>, I approach every challenge with resilience and strategy.
               </p>
@@ -77,8 +80,6 @@ function App() {
             <div className="skill-category">
               <h4>Systems & Backend</h4>
               <div className="skill-list">
-                <span>8051 Microcontroller Arch.</span>
-                <span>Embedded C / Assembly</span>
                 <span>Node.js Basics</span>
                 <span>System Architecture Design</span>
               </div>
@@ -115,7 +116,7 @@ function App() {
           </div>
         </section>
 
-        {/* --- CONTACT SECTION (New Structure - Arched Photo & Columns like Ref Image 2) --- */}
+        {/* --- CONTACT SECTION  --- */}
         <section id="contact" className="section contact-structure">
           <h3 className="section-title" style={{marginBottom: '1rem'}}>Work With Me</h3>
           
@@ -127,15 +128,15 @@ function App() {
           <div className="contact-columns">
             <div className="contact-col">
               <h4>Connect Professionally</h4>
-              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
+              <a href="https://www.linkedin.com/in/brenda-kanani-a68850298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
             </div>
             <div className="contact-col">
                <h4>Direct Email</h4>
-               <a href="mailto:your.email@example.com">your.email@example.com</a>
+               <a href="kanani.brenda20@gmail.com">your.email@example.com</a>
             </div>
             <div className="contact-col">
               <h4>View Code</h4>
-              <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub Profile ↗</a>
+              <a href="https://github.com/BrendaKanani" target="_blank" rel="noreferrer">GitHub Profile ↗</a>
             </div>
           </div>
         </section>

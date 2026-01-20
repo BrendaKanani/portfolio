@@ -1,11 +1,11 @@
 /* src/App.css */
-/* Import Serif Font for elegance */
+
+/* --- IMPORTS & VARIABLES --- */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 
 :root {
   --brand-blue: #364974;       
   --brand-dark: #1e2a45;
-  /* Deepened background almost to black for contrast */
   --bg-color: #050810;          
   --text-primary: #ffffff;     
   --text-secondary: #a0aec0;   
@@ -21,7 +21,7 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  font-family: var(--font-sans); /* Body text remains clean sans-serif */
+  font-family: var(--font-sans);
   margin: 0; padding: 0; line-height: 1.7;
   font-weight: 300;
 }
@@ -32,9 +32,9 @@ body {
   padding: 0 2rem;
 }
 
-/* --- TYPOGRAPHY UPDATES --- */
+/* --- TYPOGRAPHY --- */
 h1, h2, h3, h4 {
-  font-family: var(--font-serif); /* Headings use the new elegant font */
+  font-family: var(--font-serif);
   font-weight: 400;
   letter-spacing: 1px;
 }
@@ -46,16 +46,32 @@ h1, h2, h3, h4 {
   color: var(--text-primary);
 }
 
-/* --- NAVBAR (Kept largely the same) --- */
+/* --- NAVBAR --- */
 .navbar {
   position: fixed; top: 0; width: 100%;
   display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 5%;
-  background: rgba(5, 8, 16, 0.8); /* Darker glass */
+  background: rgba(5, 8, 16, 0.8);
   backdrop-filter: blur(10px); z-index: 1000;
   border-bottom: 1px solid #1e2a45; box-sizing: border-box;
 }
-.logo { font-weight: 700; font-size: 1.5rem; color: var(--accent-light); font-family: var(--font-serif); }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 50px;       
+  width: auto;        
+  border-radius: 50%; 
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: rotate(5deg) scale(1.1);
+}
+
 .nav-links a { margin-left: 2rem; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px;}
 .nav-links a:hover { color: var(--accent-light); }
 .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
@@ -67,17 +83,17 @@ h1, h2, h3, h4 {
   display: flex; flex-direction: column; justify-content: center;
 }
 
-/* --- NEW HERO STRUCTURE (Matches Reference Image 1) --- */
+/* --- HERO SECTION --- */
 .hero {
   min-height: 100vh;
   padding-top: 0;
   align-items: center; text-align: center;
   position: relative;
-  /* PLACEHOLDER BG IMAGE - Replace URL with your chosen tech image */
+  /* Make sure styling for hero-bg.png works */
   background-image: linear-gradient(rgba(5, 8, 16, 0.7), rgba(5, 8, 16, 0.8)), url('./images/hero-bg.png');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Parallax effect */
+  background-attachment: fixed;
 }
 
 .hero h1 {
@@ -85,35 +101,29 @@ h1, h2, h3, h4 {
   text-transform: uppercase; letter-spacing: 2px;
 }
 
-/* src/App.css */
-
 .hero-avatar {
-  width: 250px;              /* Size of the circle */
-  height: 250px;             /* Must match width to be a perfect circle */
+  width: 250px;              
+  height: 250px;             
   margin-top: 80px;
-  border-radius: 50%;        /* This makes it round */
-  object-fit: cover;         /* Prevents stretching if photo isn't square */
-  
-  /* Styling to match your Blue/Dark Theme */
+  border-radius: 50%;        
+  object-fit: cover;         
   border: 3px solid var(--brand-blue); 
-  box-shadow: 0 0 25px rgba(54, 73, 116, 0.5); /* Blue glow effect */
-  
-  margin-bottom: 0.2rem;       /* Space between photo and your name */
+  box-shadow: 0 0 25px rgba(54, 73, 116, 0.5); 
+  margin-bottom: 0.2rem;       
   transition: transform 0.3s ease;
 }
 
 .hero-avatar:hover {
-  transform: scale(1.05);    /* Subtle zoom when hovered */
+  transform: scale(1.05);    
   border-color: var(--accent-light);
 }
 
 .hero h2 {
-  font-family: var(--font-sans); /* Subtitle stays clean sans */
+  font-family: var(--font-sans);
   font-size: 1.2rem; color: var(--accent-light);
   text-transform: uppercase; letter-spacing: 3px; margin-bottom: 3rem;
 }
 
-/* Elegant Button Style */
 .btn-elegant {
   padding: 1rem 3rem;
   background: transparent;
@@ -124,16 +134,15 @@ h1, h2, h3, h4 {
 }
 .btn-elegant:hover { background: var(--brand-blue); border-color: var(--brand-blue); }
 
-/* --- NEW ABOUT STRUCTURE (Matches Reference Image 3 - Split view) --- */
+/* --- ABOUT SECTION --- */
 .about-split {
   display: flex; align-items: center; gap: 4rem;
 }
 
 .about-photo-container { flex: 1; }
-/* The square photo style */
 .photo-square {
   width: 100%; aspect-ratio: 1/1; object-fit: cover;
-  border-radius: 4px; /* Slight softening like reference */
+  border-radius: 4px;
   border: 1px solid #1e2a45;
 }
 .about-text { flex: 1; }
@@ -141,38 +150,74 @@ h1, h2, h3, h4 {
 .about-text p { color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1.05rem; }
 
 
-/* --- NEW CONTACT STRUCTURE (Matches Reference Image 2 - Arched) --- */
+/* --- UPDATED CONTACT SECTION --- */
 .contact-structure {
   text-align: center;
 }
+
 .contact-arch-container {
-  margin: 3rem auto;
-  width: 300px; height: 400px; /* Tall arch proportions */
+  /* 1. Pulled closer to the bottom elements (removed huge bottom margin) */
+  margin: 0 auto 2rem auto; 
+  width: 300px; 
+  height: 400px;
 }
-/* The Arched Photo Style */
+
 .photo-arch {
   width: 100%; height: 100%; object-fit: cover;
   border-top-left-radius: 150px; border-top-right-radius: 150px;
   border: 1px solid #1e2a45;
 }
+
 .contact-columns {
-  display: flex; justify-content: space-between;
-  max-width: 800px; margin: 4rem auto 0;
-  text-align: center;
+  display: flex;
+  
+  /* 2. Changed 'space-between' to 'center' + 'gap' 
+     This keeps them close but prevents mixing up. */
+  justify-content: center; 
+  gap: 5rem; 
+
+  /* 3. Removed top margin so it sits closer to the photo */
+  margin: 0 auto; 
+  
+  max-width: 800px;
+  text-align: left; /* Aligns the text neatly inside the columns */
 }
+
 .contact-col h4 {
   font-family: var(--font-sans); text-transform: uppercase;
   letter-spacing: 1px; color: var(--accent-light); margin-bottom: 1rem;
   font-size: 0.9rem; text-decoration: underline;
 }
+
+/* src/App.css */
+
+/* 1. Target the link inside the column explicitly */
 .contact-col a {
-  display: block; color: var(--text-secondary); text-decoration: none;
-  margin-bottom: 0.5rem; transition: color 0.3s;
+  display: block;
+  margin-bottom: 0.8rem;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  
+  /* FORCE the color to be gray by default */
+  color: var(--text-secondary) !important; 
 }
-.contact-col a:hover { color: var(--brand-blue); }
 
+/* 2. FORCE the gray color to stay even after visiting or clicking */
+.contact-col a:visited,
+.contact-col a:active,
+.contact-col a:focus {
+  color: var(--text-secondary) !important;
+}
 
-/* --- SKILLS & PROJECTS (Retaining grids, updated fonts) --- */
+/* 3. ONLY change to blue when hovering */
+.contact-col a:hover {
+  color: var(--accent-light) !important;
+  transform: translateX(5px);
+  cursor: pointer;
+}
+
+/* --- SKILLS & PROJECTS --- */
 .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
 .skill-category h4 { color: var(--accent-light); margin-bottom: 1.5rem; border-bottom: 1px solid #1e2a45; padding-bottom: 1rem; }
 .skill-list span { display: block; background: rgba(30, 42, 69, 0.3); margin-bottom: 0.8rem; padding: 0.8rem 1rem; border: 1px solid #1e2a45; font-size: 0.95rem; transition: all 0.3s; }
@@ -188,12 +233,15 @@ h1, h2, h3, h4 {
 /* --- FOOTER --- */
 footer { margin-top: 8rem; text-align: center; color: var(--text-secondary); border-top: 1px solid #1e2a45; padding: 3rem 0; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;}
 
-/* Mobile Responsiveness Updates */
+/* --- MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
   .hero h1 { font-size: 3rem; }
   .about-split { flex-direction: column; gap: 2rem; }
   .about-text h3 { font-size: 3rem; }
-  .contact-columns { flex-direction: column; gap: 2rem; }
+  
+  /* Stack contact columns on mobile */
+  .contact-columns { flex-direction: column; gap: 2rem; text-align: center; }
+  
   .navbar { padding: 1rem 2rem; }
   .hamburger { display: block; }
   .nav-links { position: absolute; top: 60px; left: 0; width: 100%; background: var(--bg-color); flex-direction: column; align-items: center; padding: 2rem 0; display: none; border-bottom: 1px solid #1e2a45; }
