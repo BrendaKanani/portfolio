@@ -1,21 +1,44 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { projectsData } from './data/projects';
-import profile from './images/brenda-profile.jpg';
+import profile from './images/bk.png';
 import logo from './images/bk.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { FaBars } from "react-icons/fa";
+
+// --- Loader Component ---
+function Loader() {
+  return (
+    <div className="loader">
+      <div className="spinner"></div>
+      <p>Loading portfolio...</p>
+    </div>
+  );
+}
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+
+    // Simulate loading (e.g., images/projects fetching)
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
 
   return (
     <div className="app">
-      
       {/* --- NAVIGATION BAR --- */}
       <nav className="navbar">
-       <div className="logo-container">
-       <img src={logo} alt="Brenda Kanani Logo" className="navbar-logo" />
-       </div>
+        <div className="logo-container">
+          <img src={logo} alt="Brenda Kanani Logo" className="navbar-logo" />
+        </div>
         <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
           <a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a>
           <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
@@ -24,27 +47,26 @@ function App() {
           <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
         </div>
         <div className="hamburger" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          ☰
+          <FaBars />
         </div>
       </nav>
 
-      {/* --- HERO SECTION (New Structure - Centered on BG Image) --- */}
+      {/* --- HERO SECTION --- */}
       <section id="home" className="hero section">
         <div className="container">
-          <img src ={profile} alt='Profile' className='hero-avatar' />
+          <img src={profile} alt='Profile' className='hero-avatar' />
           <h1>Brenda Kanani</h1>
-          <h2>Computer Science | System Architecture | React</h2>
+          <h2>Software Developer | AI Enthusiast | React & System Design</h2>
           <a href="#projects" className="btn-elegant">View Selected Work</a>
+          <a href="/cv.pdf" download className="btn-elegant">Download CV</a>
         </div>
       </section>
 
       <div className="container">
-        
-        {/* --- ABOUT SECTION (New Structure - Split View like Ref Image 3) --- */}
+        {/* --- ABOUT SECTION --- */}
         <section id="about" className="section">
           <div className="about-split">
             <div className="about-photo-container">
-              {/* Square Photo */}
               <img src={profile} alt="Profile" className="photo-square" />
             </div>
             <div className="about-text">
@@ -59,11 +81,15 @@ function App() {
                 front-ends with <strong>React</strong>, or hiking Mount Kenya with the 
                 <em> Climb to Educate Club</em>, I approach every challenge with resilience and strategy.
               </p>
+              <p>
+                Outside of tech, I enjoy exploring creativity, hiking, and continuously 
+                challenging myself to grow both technically and personally.
+              </p>
             </div>
           </div>
         </section>
 
-        {/* --- SKILLS SECTION (Grid Structure retained) --- */}
+        {/* --- SKILLS SECTION --- */}
         <section id="skills" className="section">
           <h3 className="section-title">Technical Expertise</h3>
           <div className="skills-grid">
@@ -97,7 +123,7 @@ function App() {
           </div>
         </section>
 
-        {/* --- PROJECTS SECTION (Grid Structure retained) --- */}
+        {/* --- PROJECTS SECTION --- */}
         <section id="projects" className="section">
           <h3 className="section-title">Selected Works</h3>
           <div className="projects-grid">
@@ -116,11 +142,10 @@ function App() {
           </div>
         </section>
 
-        {/* --- CONTACT SECTION  --- */}
+        {/* --- CONTACT SECTION --- */}
         <section id="contact" className="section contact-structure">
           <h3 className="section-title" style={{marginBottom: '1rem'}}>Work With Me</h3>
           
-          {/* Arched Photo */}
           <div className="contact-arch-container">
              <img src={profile} alt="Contact Profile" className="photo-arch" />
           </div>
@@ -128,11 +153,11 @@ function App() {
           <div className="contact-columns">
             <div className="contact-col">
               <h4>Connect Professionally</h4>
-              <a href="https://www.linkedin.com/in/brenda-kanani-a68850298?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
+              <a href="https://www.linkedin.com/in/brenda-kanani-a68850298" target="_blank" rel="noreferrer">LinkedIn Profile ↗</a>
             </div>
             <div className="contact-col">
                <h4>Direct Email</h4>
-               <a href="kanani.brenda20@gmail.com">your.email@example.com</a>
+               <a href="mailto:kanani.brenda20@gmail.com">kanani.brenda20@gmail.com</a>
             </div>
             <div className="contact-col">
               <h4>View Code</h4>
@@ -145,7 +170,6 @@ function App() {
         <footer>
           <p>© 2026 Brenda Kanani | System Architecture & Design | Nyeri, Kenya</p>
         </footer>
-        
       </div>
     </div>
   );
